@@ -63,7 +63,7 @@ struct Contact {
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Load configuration
     // load_config();
-    let mod_directory = "c";
+    let mod_directory = "c:/Users/kevinv/AppData/Roaming/com.modrinth.theseus/profiles/Fabulously Optimized 5.2.3/mods/";
     let output_csv_path: &str = "./";
     let mut csv_content = String::new();
     csv_content.push_str("Schema Version,Mod ID,Version,Environment,Entry Client,Entry ModMenu,Custom Strategy,Custom URL,Depends Fabric,Depends Cloth-Config2,Recommends ModMenu,Name,Description,Icon,Authors,Contact Homepage,Contact Sources,Contact Issues\n");
