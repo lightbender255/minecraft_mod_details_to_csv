@@ -1,6 +1,7 @@
 // "Certainly! Here's the modified code with all the fields from the example `fabric.mod.json` added to the `FabricModInfo` struct. You can customize the `FabricModInfo` struct
 // to include any additional fields you might want to extract from your `fabric.mod.json` files:", said ChatGPT 3
 
+use config::Config;
 use serde::Deserialize;
 use std::fs;
 use std::fs::File;
@@ -9,14 +10,14 @@ use serde_json;
 
 #[derive(Deserialize)]
 struct FabricModInfo {
-    schemaVersion: u32,
+    schema_version: u32,
     id: String,
     version: String,
     environment: String,
     entrypoints: EntryPoints,
     custom: Option<Custom>,
     mixins: Vec<String>,
-    accessWidener: String,
+    access_widener: String,
     depends: Depends,
     recommends: Option<Recommends>,
     name: String,
@@ -83,7 +84,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
                 // Append mod information to the CSV content
                 csv_content.push_str(&format!(
                     "{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{},{}\n",
-                    mod_info.schemaVersion,
+                    mod_info.schema_version,
                     mod_info.id,
                     mod_info.version,
                     mod_info.environment,
@@ -114,7 +115,5 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     Ok(())
 }
-
-// Replace `"path_to_mod_directory"` with the actual path to the directory containing your `fabric.mod.json` files, and `"mods_info.csv"` with the desired name for the output CSV file.
 
 // This code will now extract all known fields from the `fabric.mod.json` files and write the information to a CSV file. Make sure to adjust the code to match the actual structure of your `fabric.mod.json` files if there are any differences.

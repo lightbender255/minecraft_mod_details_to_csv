@@ -1,0 +1,2 @@
+mod_directory = "path/to/mod/directory"
+output_csv_path = "mods_info.csv"
