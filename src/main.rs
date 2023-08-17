@@ -12,6 +12,7 @@ struct AppConfig {
     mod_directory: String,
     output_csv_path: String,
 }
+
 #[derive(Deserialize)]
 struct FabricModInfo {
     schema_version: u32,
@@ -65,15 +66,19 @@ struct Contact {
     issues: String,
 }
 
-fn load_config() {
-    // Not implemented
-    //  I don't know how to return the AppConfig structure.
-}
+// fn load_config() -> AppConfig {
+    // let config = AppConfig {
+    //     mod_directory: String("C:/users/kevinv/"),
+    //     output_csv_path: String("./")
+    // };
+    // return config;
+// }
+
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Load configuration
     // load_config();
-    let mod_directory = "C:/Users/kevinv/AppData/Roaming/com.modrinth.theseus/profiles/Fabulously Optimized 5.2.3/mods";
+    let mod_directory = "c";
     let output_csv_path: &str = "./";
     let mut csv_content = String::new();
     csv_content.push_str("Schema Version,Mod ID,Version,Environment,Entry Client,Entry ModMenu,Custom Strategy,Custom URL,Depends Fabric,Depends Cloth-Config2,Recommends ModMenu,Name,Description,Icon,Authors,Contact Homepage,Contact Sources,Contact Issues\n");
