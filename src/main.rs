@@ -7,12 +7,6 @@ use std::fs::File;
 use std::io::{Read, Write};
 use serde_json;
 
-#[derive(Debug, Deserialize)]
-struct AppConfig {
-    mod_directory: String,
-    output_csv_path: String,
-}
-
 #[derive(Deserialize)]
 struct FabricModInfo {
     schema_version: u32,
@@ -65,15 +59,6 @@ struct Contact {
     sources: String,
     issues: String,
 }
-
-// fn load_config() -> AppConfig {
-    // let config = AppConfig {
-    //     mod_directory: String("C:/users/kevinv/"),
-    //     output_csv_path: String("./")
-    // };
-    // return config;
-// }
-
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     // Load configuration
