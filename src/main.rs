@@ -1,13 +1,17 @@
 // "Certainly! Here's the modified code with all the fields from the example `fabric.mod.json` added to the `FabricModInfo` struct. You can customize the `FabricModInfo` struct
 // to include any additional fields you might want to extract from your `fabric.mod.json` files:", said ChatGPT 3
 
-use config::Config;
 use serde::Deserialize;
 use std::fs;
 use std::fs::File;
 use std::io::{Read, Write};
 use serde_json;
 
+#[derive(Debug, Deserialize)]
+struct AppConfig {
+    mod_directory: String,
+    output_csv_path: String,
+}
 #[derive(Deserialize)]
 struct FabricModInfo {
     schema_version: u32,
@@ -16,8 +20,6 @@ struct FabricModInfo {
     environment: String,
     entrypoints: EntryPoints,
     custom: Option<Custom>,
-    mixins: Vec<String>,
-    access_widener: String,
     depends: Depends,
     recommends: Option<Recommends>,
     name: String,
@@ -63,10 +65,16 @@ struct Contact {
     issues: String,
 }
 
-fn main() -> Result<(), Box<dyn std::error::Error>> {
-    let mod_directory = "path_to_mod_directory"; // Replace with the actual directory path
-    let output_csv_path = "mods_info.csv";
+fn load_config() {
+    // Not implemented
+    //  I don't know how to return the AppConfig structure.
+}
 
+fn main() -> Result<(), Box<dyn std::error::Error>> {
+    // Load configuration
+    // load_config();
+    let mod_directory = "C:/Users/kevinv/AppData/Roaming/com.modrinth.theseus/profiles/Fabulously Optimized 5.2.3/mods";
+    let output_csv_path: &str = "./";
     let mut csv_content = String::new();
     csv_content.push_str("Schema Version,Mod ID,Version,Environment,Entry Client,Entry ModMenu,Custom Strategy,Custom URL,Depends Fabric,Depends Cloth-Config2,Recommends ModMenu,Name,Description,Icon,Authors,Contact Homepage,Contact Sources,Contact Issues\n");
 
@@ -116,4 +124,6 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
     Ok(())
 }
 
-// This code will now extract all known fields from the `fabric.mod.json` files and write the information to a CSV file. Make sure to adjust the code to match the actual structure of your `fabric.mod.json` files if there are any differences.
+// This code will now extract all known fields from the `fabric.mod.json`
+// files and write the information to a CSV file. Make sure to adjust the
+// Config.toml
